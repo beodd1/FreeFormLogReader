@@ -1,17 +1,51 @@
 <html lang="en">
-
 <head>
     <link rel="stylesheet" href="css/bootstrap.min.css" crossorigin="anonymous">
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/jquery.fileupload.css">
-    
     <script src="js/jquery.min.js" crossorigin="anonymous"></script>
     <script src="js/jquery.ui.widget.js"></script>
     <script src="js/jquery.iframe-transport.js"></script>
     <script src="js/jquery.fileupload.js"></script>
     <script src="js/bootstrap.min.js" crossorigin="anonymous"></script>
+    <style>
+    #drop_file_zone {
+        background-color: #EEE; 
+        border: #999 5px dashed;
+        width: 100%; 
+        height: 100%;
+        padding: 8px;
+        font-size: 18px;
+    }
+    
+    .fileinput-button {
+    position: relative;
+    overflow: hidden;
+    display: inline-block;
+    }
+    
+  .fileinput-button input {
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: 0;
+    opacity: 0;
+    -ms-filter: 'alpha(opacity=0)';
+    font-size: 200px !important;
+    direction: ltr;
+    cursor: pointer;
+    }
 
+  /* Fixes for IE < 8 */
+  @media screen\9 {
+    .fileinput-button input {
+      filter: alpha(opacity=0);
+      font-size: 100%;
+      height: 100%;
+    }
+}
 
+    
+    
+    </style>
     <script>
 
 
@@ -42,41 +76,27 @@
     });
     </script>
 </head>
-
-
-
-
-
-
-
-
-
-
-    
- 
-
-
 <body>
-    <div class="container">
-
-        <!-- The fileinput-button span is used to style the file input field as button -->
-        <span class="btn btn-success fileinput-button">
-
-            <i class="glyphicon glyphicon-plus"></i>
-            <span>Select Log</span>
-                       
-            <input id="fileupload" type="file" name="files[]" multiple>
-        </span>
-        <br>
-        <br>
-        <!-- The global progress bar -->
-        <div id="progress" class="progress">
-            <div class="progress-bar progress-bar-success"></div>
-        </div>
-        <!-- The container for the uploaded files -->
-        <div id="files" class="files"></div>
-        <br>
-
+    <div id="drop_file_zone" class="container">
+        
+        
+            
+            <span class="btn btn-success fileinput-button">
+                <i class="glyphicon glyphicon-plus"></i>
+                <span>Select Log</span>            
+                <input id="fileupload" type="file" name="files[]" multiple>
+            </span>
+            
+            
+            <!-- The global progress bar -->
+            <div id="progress" class="progress">
+                <div class="progress-bar progress-bar-success"></div>
+            </div>
+            <!-- The container for the uploaded files -->
+            <label id="files" class="files"/>
+            <br>
+        
+            
     </div>
 </body>
 
