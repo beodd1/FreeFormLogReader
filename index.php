@@ -7,6 +7,9 @@
     <script src="js/jquery.fileupload.js"></script>
     <script src="js/bootstrap.min.js" crossorigin="anonymous"></script>
     <style>
+ 
+     
+ 
     #drop_file_zone {
         background-color: #EEE; 
         border: #999 5px dashed;
@@ -79,23 +82,40 @@
 <body>
     <div id="drop_file_zone" class="container">
         
+        <div >
+            <h2>Free Form Log Reader</h2>
+            <p>A Log Reader For Everyone</p> 
+        </div>
         
-            
-            <span class="btn btn-success fileinput-button">
-                <i class="glyphicon glyphicon-plus"></i>
-                <span>Select Log</span>            
-                <input id="fileupload" type="file" name="files[]" multiple>
-            </span>
-            
-            
-            <!-- The global progress bar -->
-            <div id="progress" class="progress">
-                <div class="progress-bar progress-bar-success"></div>
+        <div class="container">
+            <div class="row">
+              <div  class="col-sm-4">
+                <h4>Upload Log File</h4>
+                <span class="btn btn-success fileinput-button">
+                    <i class="glyphicon glyphicon-plus"></i>
+                    <span>Drag File or Click</span>            
+                    <input id="fileupload" type="file" name="files[]" multiple>
+                </span>
+
+
+                <!-- The global progress bar -->
+                <div id="progress" class="progress">
+                    <div class="progress-bar progress-bar-success"></div>
+                </div>
+                <!-- The container for the uploaded files -->
+                <label id="files" class="files"/>
+                <br>
+              </div>
+              <div class="col-sm-4">
+                <h3>Column 2</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit...</p>
+                <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris...</p>
+              </div>
+
             </div>
-            <!-- The container for the uploaded files -->
-            <label id="files" class="files"/>
-            <br>
-        
+        </div>
+            
+
             
     </div>
 </body>

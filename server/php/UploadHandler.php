@@ -1179,6 +1179,7 @@ class UploadHandler
             }
             $this->set_additional_file_properties($file);
         }
+        
         return $file;
     }
 

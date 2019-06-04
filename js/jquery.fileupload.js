@@ -232,7 +232,18 @@
             // send: function (e, data) {}, // .bind('fileuploadsend', func);
 
             // Callback for successful uploads:
-            // done: function (e, data) {}, // .bind('fileuploaddone', func);
+            done: function (e, data) {
+          
+                var progress = parseInt(data.loaded / data.total * 100, 10);
+                $('#progress .progress-bar').css(
+                    'width',
+                    0 + '%'
+                );
+          
+          
+            }, // .bind('fileuploaddone', func);
+            
+
 
             // Callback for failed (abort or error) uploads:
             // fail: function (e, data) {}, // .bind('fileuploadfail', func);
