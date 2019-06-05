@@ -58,6 +58,7 @@
         var url = window.location.hostname === 'blueimp.github.io' ?
                     '' : 'server/php/';
 
+                    
 
         $('#fileupload').fileupload({
             url: url,
@@ -65,18 +66,37 @@
             done: function (e, data) {
                 $.each(data.result.files, function (index, file) {
                     $('<p/>').text(file.name).appendTo('#files');
+                    document.getElementById('files_').value = file.name;
+                    //alert(file.name);
                 });
+                
             },
             progressall: function (e, data) {
+            
                 var progress = parseInt(data.loaded / data.total * 100, 10);
                 $('#progress .progress-bar').css(
                     'width',
-                    progress + '%'
+                    (progress+10) + '%'
                 );
+                if (progress==100)
+                {
+                    //alert("Complete!");
+                    $('#progress .progress-bar').css(
+                    'width',
+                    (0) + '%'
+                );
+                    
+                    //alert(document.getElementById('files'));
+                    //document.getElementById('files_').value = document.getElementById('files').textContent;
+                }
             }
+            
         }).prop('disabled', !$.support.fileInput)
             .parent().addClass($.support.fileInput ? undefined : 'disabled');
+            
     });
+    
+    
     </script>
 </head>
 <body>
@@ -103,7 +123,10 @@
                     <div class="progress-bar progress-bar-success"></div>
                 </div>
                 <!-- The container for the uploaded files -->
-                <label id="files" class="files"/>
+                <form>
+                
+                <input type="text" id="files_" class="files"/>
+                </form>
                 <br>
               </div>
               <div class="col-sm-4">
