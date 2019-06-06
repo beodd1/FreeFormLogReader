@@ -67,6 +67,7 @@
                 $.each(data.result.files, function (index, file) {
                     $('<p/>').text(file.name).appendTo('#files');
                     document.getElementById('files_').value = file.name;
+                    document.getElementById('FileNamePostBack').submit();
                     //alert(file.name);
                 });
                 
@@ -104,7 +105,16 @@
         
         <div >
             <h2>Free Form Log Reader</h2>
-            <p>A Log Reader For Everyone</p> 
+            <p>A Log Reader For Everyone: 
+                <?php 
+                
+                    //echo $_POST['files_'];
+                   //if(!empty($_POST['files_']))
+                   // {
+                        var_dump($_POST);
+                    //}
+                
+                ?></p> 
         </div>
         
         <div class="container">
@@ -123,9 +133,9 @@
                     <div class="progress-bar progress-bar-success"></div>
                 </div>
                 <!-- The container for the uploaded files -->
-                <form>
-                
-                <input type="text" id="files_" class="files"/>
+                <form id="FileNamePostBack" action="index.php" method="post" >
+                    <input type="text" id="files_" class="files"/>
+                    <input type="submit" />
                 </form>
                 <br>
               </div>
