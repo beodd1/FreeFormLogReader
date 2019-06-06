@@ -68,6 +68,7 @@
                     $('<p/>').text(file.name).appendTo('#files');
                     document.getElementById('files_').value = file.name;
                     document.getElementById('FileNamePostBack').submit();
+                    
                     //alert(file.name);
                 });
                 
@@ -86,6 +87,8 @@
                     'width',
                     (0) + '%'
                 );
+        
+                
                     
                     //alert(document.getElementById('files'));
                     //document.getElementById('files_').value = document.getElementById('files').textContent;
@@ -134,7 +137,7 @@
                 </div>
                 <!-- The container for the uploaded files -->
                 <form id="FileNamePostBack" action="index.php" method="post" >
-                    <input type="text" id="files_" class="files"/>
+                    <input type="text" name="files_"  id="files_" class="files"/>
                     <input type="submit" />
                 </form>
                 <br>
