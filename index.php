@@ -104,54 +104,55 @@
     </script>
 </head>
 <body>
+    
+<form id="FileNamePostBack" action="index.php" method="post" >
+    <input hidden="true" type="text" name="files_"  id="files_" class="files"/>
+</form>
+    
+    
     <div id="drop_file_zone" class="container">
         
         <div >
-            <h2>Free Form Log Reader</h2>
-            <p>A Log Reader For Everyone: 
-                <?php 
-                
-                    //echo $_POST['files_'];
-                   //if(!empty($_POST['files_']))
-                   // {
-                        var_dump($_POST);
-                    //}
-                
-                ?></p> 
-        </div>
-        
-        <div class="container">
-            <div class="row">
-              <div  class="col-sm-4">
-                <h4>Upload Log File</h4>
-                <span class="btn btn-success fileinput-button">
-                    <i class="glyphicon glyphicon-plus"></i>
-                    <span>Drag File or Click</span>            
-                    <input id="fileupload" type="file" name="files[]" multiple>
-                </span>
-
-
-                <!-- The global progress bar -->
-                <div id="progress" class="progress">
-                    <div class="progress-bar progress-bar-success"></div>
+            <div class="container">
+                <div class="row">
+                    <div  class="col-sm-9">
+                        <h2>Free Form Log Reader</h2>
+                        <p>A Log Reader For Everyone</p>
+                    </div>
+                    <div   class="col-sm-3">
+                        <br>
+                        <span  class="btn btn-success fileinput-button">
+                            <i class="glyphicon glyphicon-plus"></i>
+                            <span>Drag File or Click Begin</span>            
+                            <input id="fileupload" type="file" name="files[]" multiple>
+                        </span>
+                    </div>
                 </div>
-                <!-- The container for the uploaded files -->
-                <form id="FileNamePostBack" action="index.php" method="post" >
-                    <input type="text" name="files_"  id="files_" class="files"/>
-                    <input type="submit" />
-                </form>
-                <br>
-              </div>
-              <div class="col-sm-4">
-                <h3>Column 2</h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit...</p>
-                <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris...</p>
-              </div>
-
+                <div style="height: 5px;" id="progress" class="progress">
+                    <div style="height: 5px;" class="progress-bar progress-bar-success"></div>
+                </div>
             </div>
+        <div style="overflow:scroll; height:70%; width: 98%" >
+            <?php 
+                //var_dump($_POST);
+                if(!empty($_POST['files_']))
+                {
+                    $file = new SplFileObject("./server/php/files/". $_POST['files_'] );
+                    
+                    echo "<h5><ul>";
+                    while (!$file->eof()) 
+                    {
+                        $file->fgets();
+                        echo "<li>";
+                        echo $file;
+                        echo "</li>"; 
+                        continue;
+                    }
+                    echo "</ul></h5>";
+                }
+                
+            ?>
         </div>
-            
-
             
     </div>
 </body>
