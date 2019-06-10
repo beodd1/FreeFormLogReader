@@ -7,7 +7,7 @@
     <script src="js/jquery.fileupload.js"></script>
     <script src="js/bootstrap.min.js" crossorigin="anonymous"></script>
 
-    <script>
+<script>
 
 
     $(function () {
@@ -60,7 +60,7 @@
     });
     
     
-    </script>
+</script>
     
     
     
@@ -213,7 +213,7 @@
 
     
     
-    </style>
+</style>
     
     
     
@@ -222,18 +222,26 @@
 
 <div class="topnavbar">
   <a href="#home">Free Form Log Reader</a>
-
-  
-  
 </div>
 
-
+    
+<form id="FileNamePostBack" action="index.php" method="post" >
     
 <div class="bottomnavbar">
-    <a href="#home"><input type="checkbox"/> Critical</a>
+    <a href="#home"><input  type="checkbox"/> Critical</a>
   <a href="#news"><input type="checkbox"/>Error</a>
   <a href="#contact"><input type="checkbox"/>Warning</a>
-  <a href="#contact"><input type="checkbox"/>Everything</a>
+  <?php
+    if(!empty($_POST['matchOnly_']))
+    {
+        echo "<a href='#contact'><input checked='true' name='matchOnly_'  type='checkbox'/>Everything</a>";
+    }
+    else 
+    {
+        echo "<a href='#contact'><input name='matchOnly_' type='checkbox'/>Everything</a>";
+    }
+  ?>
+  
 </div>    
     
     <div id="drop_file_zone" class="container">
@@ -259,7 +267,7 @@
             </div>
             
                     
-<form id="FileNamePostBack" action="index.php" method="post" >
+
     <input hidden="true" type="text" name="files_"  id="files_" class="files"
         <?php 
                 if(!empty($_POST['files_']))
@@ -287,7 +295,7 @@
             
         </div>
 
-</form>
+
 
 
 
@@ -321,13 +329,20 @@
                         }
                         //else 
                         //{
+                        if(empty($_POST['matchOnly_']))
+                        {
                             echo "<li style='list-style: none'>";
                             echo $file;
                             echo "</li>";
-                        //}
+                        }
+                        else 
+                        {
+                            
+                        }
                         continue;
                     }
                     echo "</ul></h5>";
+                    echo var_dump($_POST);
                 }
                 
             ?>
@@ -335,7 +350,7 @@
             
     </div>
 
-    
+</form>    
 
         
 </body>
