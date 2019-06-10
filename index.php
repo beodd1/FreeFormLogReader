@@ -234,11 +234,11 @@
   <?php
     if(!empty($_POST['matchOnly_']))
     {
-        echo "<a href='#contact'><input checked='true' name='matchOnly_'  type='checkbox'/>Everything</a>";
+        echo "<a href='#contact'><input checked='true' name='matchOnly_'  type='checkbox'/>Matches Only</a>";
     }
     else 
     {
-        echo "<a href='#contact'><input name='matchOnly_' type='checkbox'/>Everything</a>";
+        echo "<a href='#contact'><input name='matchOnly_' type='checkbox'/>Matches Only</a>";
     }
   ?>
   
@@ -327,22 +327,19 @@
                                 continue;
                             }  
                         }
-                        //else 
-                        //{
+
+                        
                         if(empty($_POST['matchOnly_']))
                         {
                             echo "<li style='list-style: none'>";
                             echo $file;
                             echo "</li>";
+                            continue;
                         }
-                        else 
-                        {
-                            
-                        }
-                        continue;
+                        
                     }
                     echo "</ul></h5>";
-                    echo var_dump($_POST);
+                    //echo var_dump($_POST);
                 }
                 
             ?>
