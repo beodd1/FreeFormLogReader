@@ -225,119 +225,64 @@
 </div>
 
     
-<form id="FileNamePostBack" action="index.php" method="post" >
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+<form id="FileNamePostBack" action="index_dev.php" method="post" >
+
+
+
+
+<!-- Code to handle checkboxes on postback -->
+
 <div class="bottomnavbar">
-
     
-    
-    
-  
-  
 
-  
-  
-  
-  
-  
-  
-<?php
-    if(!empty($_POST['critical_']))
-    {
-        echo "<a href='#contact'><input checked='true' name='critical_'  type='checkbox'/>&nbsp;Critical&nbsp;</a>";
-    }
-    else 
-    {
-        echo "<a href='#contact'><input name='critical_' type='checkbox'/>&nbsp;Critical&nbsp;</a>";
-    }
-?>
-  
-  
-  
-  
-  
+        <?php
+            if(!empty($_POST['critical_']))
+            {
+                echo "<a href='#contact'><input checked='true' name='critical_'  type='checkbox'/>&nbsp;Critical&nbsp;</a>";
+            }
+            else 
+            {
+                echo "<a href='#contact'><input name='critical_' type='checkbox'/>&nbsp;Critical&nbsp;</a>";
+            }
 
-  
-  
-  
 
-  
-<?php
-    if(!empty($_POST['error_']))
-    {
-        echo "<a href='#contact'><input checked='true' name='error_'  type='checkbox'/>&nbsp;Error&nbsp;</a>";
-    }
-    else 
-    {
-        echo "<a href='#contact'><input name='error_' type='checkbox'/>&nbsp;Error&nbsp;</a>";
-    }
-?>
-  
-  
-  
-  
-  
+            if(!empty($_POST['error_']))
+            {
+                echo "<a href='#contact'><input checked='true' name='error_'  type='checkbox'/>&nbsp;Error&nbsp;</a>";
+            }
+            else 
+            {
+                echo "<a href='#contact'><input name='error_' type='checkbox'/>&nbsp;Error&nbsp;</a>";
+            }
 
-  
-<?php
-    if(!empty($_POST['warnning_']))
-    {
-        echo "<a href='#contact'><input checked='true' name='warnning_'  type='checkbox'/>&nbsp;Warnning&nbsp;</a>";
-    }
-    else 
-    {
-        echo "<a href='#contact'><input name='warnning_' type='checkbox'/>&nbsp;Warnning&nbsp;</a>";
-    }
-?>
-  
 
-  
-  
-  
-  
-<?php
-    if(!empty($_POST['matchOnly_']))
-    {
-        echo "<a href='#contact'><input checked='true' name='matchOnly_'  type='checkbox'/>&nbsp;Matches Only</a>";
-    }
-    else 
-    {
-        echo "<a href='#contact'><input name='matchOnly_' type='checkbox'/>&nbsp;Matches Only</a>";
-    }
-?>
-  
-  
-  
-  
-  
+            if(!empty($_POST['warnning_']))
+            {
+                echo "<a href='#contact'><input checked='true' name='warnning_'  type='checkbox'/>&nbsp;Warnning&nbsp;</a>";
+            }
+            else 
+            {
+                echo "<a href='#contact'><input name='warnning_' type='checkbox'/>&nbsp;Warnning&nbsp;</a>";
+            }
+
+            if(!empty($_POST['matchOnly_']))
+            {
+                echo "<a href='#contact'><input checked='true' name='matchOnly_'  type='checkbox'/>&nbsp;Matches Only</a>";
+            }
+            else 
+            {
+                echo "<a href='#contact'><input name='matchOnly_' type='checkbox'/>&nbsp;Matches Only</a>";
+            }
+        ?>
   
 </div> 
     
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
     <div id="drop_file_zone" class="container">
-        
         <div >
+            
+            
+            <!-- Render Progress Bar and File Select Button -->
             <div class="container">
                 <div class="row">
                     <div  class="col-sm-9">
@@ -358,59 +303,58 @@
             </div>
             
                     
+            <!-- Hidden Field to Pass Filename -->
+           <input hidden="true" type="text" name="files_"  id="files_" class="files"
+           <?php 
+                   if(!empty($_POST['files_']))
+                   {
+                       echo " value=" . $_POST['files_'] . " ";
+                   }  
+           ?> />
 
-    <input hidden="true" type="text" name="files_"  id="files_" class="files"
-        <?php 
-                if(!empty($_POST['files_']))
-                {
-                    echo " value=" . $_POST['files_'] . " ";
-                }  
-        ?> />
+        
+        
+            <!-- Render Search Box and Search Button -->
+            <div class="wrap">
+               <div class="search">
 
-        <div class="wrap">
-           <div class="search">
-               
-              <input type="text" name="search_" class="searchTerm" placeholder="Search For Something"
-                <?php 
-                if(!empty($_POST['search_']))
-                {
-                    echo " value=" . $_POST['search_'] . " ";
-                }  
-                ?>/>
-                >
-              <button type="submit" class="searchButton">
-                  <img src="img/searchico.png" height="20" width="20" alt=""/>
-             </button>
-                     
-           </div>
-            
-        </div>
-
-
-
+                  <input type="text" name="search_" class="searchTerm" placeholder="Search For Something"
+                    <?php 
+                    if(!empty($_POST['search_']))
+                    {
+                        echo " value=" . $_POST['search_'] . " ";
+                    }  
+                    ?>/>
+                    >
+                  <button type="submit" class="searchButton">
+                      <img src="img/searchico.png" height="20" width="20" alt=""/>
+                 </button>    
+               </div>    
+            </div>
 
 
-            
+
+
+
+        <!-- Start Rendering Output -->
         <div style="overflow:scroll; height:70%; width: 98%;" >
             <?php 
-                //var_dump($_POST);
+
                 if(!empty($_POST['files_']))
                 {
-                    
                     $file = new SplFileObject("./server/php/files/". $_POST['files_'] );
-                    
                     echo "<h5><ul>";
-                    
-                    
-                    
+
+                    // Main File Loop //
                     while (!$file->eof()) 
                     {
                         $file->fgets();
-                        
+                       
+                        // Render Search Matches //
                         if(!empty($_POST['search_']))
                         {
                             $search_ = $_POST['search_'];
-                            if (stripos($file, $search_)) // Filter for search string
+                            if (stripos($file, $search_))
                             {
                                 echo "<li style='background-color: #f7ffc6;'>";
                                 echo $file;
@@ -418,15 +362,11 @@
                                 continue;
                             }  
                         }
-
-
                        
-                        
+                        // Render Critical //
                         if(!empty($_POST['critical_']))
                         {
-                            
-                            //$search_ = $_POST['search_'];
-                            if (stripos($file, 'critical')) // Filter for search string
+                            if (stripos($file, 'critical'))
                             {
                                 echo "<li style='background-color: #ff0000;'>";
                                 echo $file;
@@ -436,39 +376,31 @@
                             
                         }
                         
-                        
-                        
+                        // Render Errors //                       
                         if(!empty($_POST['error_']))
                         {
-                            
-                            //$search_ = $_POST['search_'];
-                            if (stripos($file, 'error')) // Filter for search string
+                            if (stripos($file, 'error'))
                             {
                                 echo "<li style='background-color: #d86363;'>";
                                 echo $file;
                                 echo "</li>";
                                 continue;
-                            }
-                            
+                            }   
                         }
 
-                        
+                        // Render Warnnings //
                         if(!empty($_POST['warnning_']))
                         {
-                            
-                            //$search_ = $_POST['search_'];
-                            if (stripos($file, 'warn')) // Filter for search string
+                            if (stripos($file, 'warn'))
                             {
                                 echo "<li style='background-color: #db8e4e;'>";
                                 echo $file;
                                 echo "</li>";
                                 continue;
-                            }
-                            
+                            }   
                         }                        
                         
-
-                        
+                        // Remove anything that does not match any of the other conditions //
                         if(empty($_POST['matchOnly_']))
                         {
                             echo "<li style='list-style: none'>";
@@ -478,8 +410,8 @@
                         }
                         
                     }
+                    // End of File Loop
                     echo "</ul></h5>";
-                    //echo var_dump($_POST);
                 }
                 
             ?>
