@@ -227,22 +227,113 @@
     
 <form id="FileNamePostBack" action="index.php" method="post" >
     
+    
+    
+    
+    
+    
+    
+    
+    
+    
 <div class="bottomnavbar">
-    <a href="#home"><input  type="checkbox"/> Critical</a>
-  <a href="#news"><input type="checkbox"/>Error</a>
-  <a href="#contact"><input type="checkbox"/>Warning</a>
-  <?php
-    if(!empty($_POST['matchOnly_']))
+
+    
+    
+    
+  
+  
+
+  
+  
+  
+  
+  
+  
+<?php
+    if(!empty($_POST['critical_']))
     {
-        echo "<a href='#contact'><input checked='true' name='matchOnly_'  type='checkbox'/>Matches Only</a>";
+        echo "<a href='#contact'><input checked='true' name='critical_'  type='checkbox'/>&nbsp;Critical&nbsp;</a>";
     }
     else 
     {
-        echo "<a href='#contact'><input name='matchOnly_' type='checkbox'/>Matches Only</a>";
+        echo "<a href='#contact'><input name='critical_' type='checkbox'/>&nbsp;Critical&nbsp;</a>";
     }
-  ?>
+?>
   
-</div>    
+  
+  
+  
+  
+
+  
+  
+  
+
+  
+<?php
+    if(!empty($_POST['error_']))
+    {
+        echo "<a href='#contact'><input checked='true' name='error_'  type='checkbox'/>&nbsp;Error&nbsp;</a>";
+    }
+    else 
+    {
+        echo "<a href='#contact'><input name='error_' type='checkbox'/>&nbsp;Error&nbsp;</a>";
+    }
+?>
+  
+  
+  
+  
+  
+
+  
+<?php
+    if(!empty($_POST['warnning_']))
+    {
+        echo "<a href='#contact'><input checked='true' name='warnning_'  type='checkbox'/>&nbsp;Warnning&nbsp;</a>";
+    }
+    else 
+    {
+        echo "<a href='#contact'><input name='warnning_' type='checkbox'/>&nbsp;Warnning&nbsp;</a>";
+    }
+?>
+  
+
+  
+  
+  
+  
+<?php
+    if(!empty($_POST['matchOnly_']))
+    {
+        echo "<a href='#contact'><input checked='true' name='matchOnly_'  type='checkbox'/>&nbsp;Matches Only</a>";
+    }
+    else 
+    {
+        echo "<a href='#contact'><input name='matchOnly_' type='checkbox'/>&nbsp;Matches Only</a>";
+    }
+?>
+  
+  
+  
+  
+  
+  
+</div> 
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     
     <div id="drop_file_zone" class="container">
         
@@ -319,7 +410,7 @@
                         if(!empty($_POST['search_']))
                         {
                             $search_ = $_POST['search_'];
-                            if (strpos($file, $search_)) // Filter for search string
+                            if (stripos($file, $search_)) // Filter for search string
                             {
                                 echo "<li style='background-color: #f7ffc6;'>";
                                 echo $file;
@@ -327,6 +418,55 @@
                                 continue;
                             }  
                         }
+
+
+                       
+                        
+                        if(!empty($_POST['critical_']))
+                        {
+                            
+                            //$search_ = $_POST['search_'];
+                            if (stripos($file, 'critical')) // Filter for search string
+                            {
+                                echo "<li style='background-color: #ff0000;'>";
+                                echo $file;
+                                echo "</li>";
+                                continue;
+                            }
+                            
+                        }
+                        
+                        
+                        
+                        if(!empty($_POST['error_']))
+                        {
+                            
+                            //$search_ = $_POST['search_'];
+                            if (stripos($file, 'error')) // Filter for search string
+                            {
+                                echo "<li style='background-color: #d86363;'>";
+                                echo $file;
+                                echo "</li>";
+                                continue;
+                            }
+                            
+                        }
+
+                        
+                        if(!empty($_POST['warnning_']))
+                        {
+                            
+                            //$search_ = $_POST['search_'];
+                            if (stripos($file, 'warn')) // Filter for search string
+                            {
+                                echo "<li style='background-color: #db8e4e;'>";
+                                echo $file;
+                                echo "</li>";
+                                continue;
+                            }
+                            
+                        }                        
+                        
 
                         
                         if(empty($_POST['matchOnly_']))
