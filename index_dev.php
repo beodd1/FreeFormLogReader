@@ -90,7 +90,7 @@
 .bottomnavbar input button {
   float: left;
   display: block;
-  color: #000000;
+  color: #ffffff;
   text-align: center;
   padding: 14px 16px;
   text-decoration: none;
@@ -212,7 +212,19 @@
 
 
 
-    
+.updateButton {
+  width: 150px;
+  height: 28px;
+  border: 1px solid #515151;
+  background: #515151;
+  text-align: center;
+  color: #ffffff;
+  border-radius: 5px 5px 5px 5px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+
     
 </style>
     
@@ -226,25 +238,32 @@
 </div>
 
     
-<form id="FileNamePostBack" action="index.php" method="post" >
-
-
-
+<form id="FileNamePostBack" action="index_dev.php" method="post" >
 
 <!-- Code to handle checkboxes on postback -->
 
 <div class="bottomnavbar">
     
-    <a href='#contact'><input name='update_' value="Update"  type='submit'></button></a>  
-
+      
+    
         <?php
             if(!empty($_POST['critical_']))
             {
+                echo "<a href='#contact'><input class='updateButton' name='update_'  value='Update Search'  type='submit'></button></a>";                
+                echo "<a><input list='critical__' name='critical__'><datalist id='critical__'><option value='Critical'><option value='Fail'></datalist></a>";
+    
                 echo "<a href='#contact'><input checked='true' name='critical_'  type='checkbox'/>&nbsp;Critical&nbsp;</a>";
+               
+                
             }
             else 
             {
+                
+                echo "<a href='#contact'><input class='updateButton' name='update_'  value='Update Search'  type='submit'></button></a>";
+                echo "<a><input list='critical__' name='critical__'><datalist id='critical__'><option value='Critical'><option value='Fail'></datalist></a>";
+                
                 echo "<a href='#contact'><input name='critical_' type='checkbox'/>&nbsp;Critical&nbsp;</a>";
+
             }
 
 
