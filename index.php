@@ -93,10 +93,7 @@
   font-size: 17px;
 }
 
-.bottomnavbar a:hover {
-  background: #ddd;
-  color: black;
-}        
+     
         
         
 /* The navigation bar */
@@ -209,6 +206,17 @@
   transform: translate(-50%, -50%);
 }
 
+.updateButton {
+  width: 150px;
+  height: 28px;
+  border: 1px solid #515151;
+  background: #515151;
+  text-align: center;
+  color: #ffffff;
+  border-radius: 5px 5px 5px 5px;
+  cursor: pointer;
+  font-size: 16px;
+}
 
 
     
@@ -225,7 +233,7 @@
 </div>
 
     
-<form id="FileNamePostBack" action="index_dev.php" method="post" >
+<form id="FileNamePostBack" action="index.php" method="post" >
 
 
 
@@ -238,10 +246,12 @@
         <?php
             if(!empty($_POST['critical_']))
             {
+                echo "<a href='#contact'><input class='updateButton' name='update_'  value='Update Search'  type='submit'></button></a>";                
                 echo "<a href='#contact'><input checked='true' name='critical_'  type='checkbox'/>&nbsp;Critical&nbsp;</a>";
             }
             else 
             {
+                echo "<a href='#contact'><input class='updateButton' name='update_'  value='Update Search'  type='submit'></button></a>";                
                 echo "<a href='#contact'><input name='critical_' type='checkbox'/>&nbsp;Critical&nbsp;</a>";
             }
 
