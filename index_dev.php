@@ -25,6 +25,8 @@
                 $.each(data.result.files, function (index, file) {
                     $('<p/>').text(file.name).appendTo('#files');
                     document.getElementById('files_').value = file.name;
+                    document.getElementById('reset_').value = Date.now();
+                    
                     document.getElementById('FileNamePostBack').submit();
                 });
                 
@@ -249,10 +251,23 @@
         <?php
             if(!empty($_POST['critical_']))
             {
-                echo "<a href='#contact'><input class='updateButton' name='update_'  value='Update Search'  type='submit'></button></a>";                
+                echo "<a href='#contact'><input class='updateButton' name='update_'  value='Update Search'  type='submit'></button></a>";
+                
+
                 echo "<a><input list='critical__' name='critical__'><datalist id='critical__'><option value='Critical'><option value='Fail'></datalist></a>";
-    
-                echo "<a href='#contact'><input checked='true' name='critical_'  type='checkbox'/>&nbsp;Critical&nbsp;</a>";
+
+                
+                
+                if(!empty($_POST['reset_']))
+                {
+                    echo "<a href='#contact'><input checked='false' name='critical_'  type='checkbox'/>&nbsp;Critical&nbsp;</a>";
+                }
+                else 
+                {
+                    echo "<a href='#contact'><input checked='true' name='critical_'  type='checkbox'/>&nbsp;Critical&nbsp;</a>";
+                }
+                
+                
                
                 
             }
@@ -325,6 +340,7 @@
             
                     
             <!-- Hidden Field to Pass Filename -->
+            
            <input hidden="true" type="text" name="files_"  id="files_" class="files"
            <?php 
                    if(!empty($_POST['files_']))
@@ -332,6 +348,8 @@
                        echo " value=" . $_POST['files_'] . " ";
                    }  
            ?> />
+           
+           <input type="text" name="reset_"  id="reset_"/>
 
         
         
@@ -339,7 +357,7 @@
             <div class="wrap">
                <div class="search">
 
-                  <input type="text" name="search_" class="searchTerm" placeholder="Search For Something"
+                  <input type="text" name="search_" class="searchTerm"  placeholder="Search For Something"
                     <?php 
                     if(!empty($_POST['search_']))
                     {
