@@ -26,8 +26,7 @@
     
 <form id="FileNamePostBack" action="index_dev.php" method="post" >
 
-<!-- Code to handle checkboxes on postback -->
-
+    <!-- Code to handle checkboxes on postback -->
     <div  class="bottomnavbar">
     
     <a href='#contact'><input class='updateButton' name='update_'  value='Update Search'  type='submit'></button></a>
@@ -39,24 +38,24 @@
                 
                 if(!empty($_POST['reset_']))
                 {
-                    echo "<a style='padding: 15px 0px;' href='#contact'><input checked='false' name='critical_'  type='checkbox'/></a>";
+                    echo "<a style='padding: 15px 0px;' href='#contact'><input checked='false' name='critical_'  onchange='handleChange(this);' type='checkbox'/></a>";
                 }
                 else 
                 {
-                    echo "<a style='padding: 15px 0px;' href='#contact'><input checked='true' name='critical_'  type='checkbox'/></a>";
+                    echo "<a style='padding: 15px 0px;' href='#contact'><input checked='true' name='critical_' onchange='handleChange(this);'  type='checkbox'/></a>";
                 }
    
             }
             else 
             {
                 
-                echo "<a style='padding: 15px 0px;' href='#contact'><input name='critical_' type='checkbox'/></a>";
+                echo "<a style='padding: 15px 0px;' href='#contact'><input onchange='handleChange(this);' name='critical_' type='checkbox'/></a>";
 
             }
 
             ?>
     
-    <a style="padding: 10px 5px;" ><input  style='background: #ff3030; color: #000000; padding: 0px 0px;' placeholder='Critical String' list='critical__' name='critical__'><datalist id='critical__'><option value='Critical'><option value='Fail'></datalist></a>
+    <a style="padding: 10px 5px;" ><input disabled style='background: #ff3030; color: #000000; padding: 0px 0px;' placeholder='Critical String' id='critical__db' list='critical__' name='critical__db'><datalist id='critical__'><option value='Critical'><option value='Fail'></datalist></a>
     
             <?php
 
@@ -103,8 +102,10 @@
   
 </div> 
         
+    
     <div id="drop_file_zone" class="container">
         <div >           
+            
             <!-- Render Progress Bar and File Select Button -->
             <div class="container">
                 <div class="row">
@@ -132,8 +133,9 @@
                 
                 
             </div>
+            
             <!-- Hidden Field to Pass Filename -->
-           <input hidden="true" type="text" name="files_"  id="files_" class="files"
+            <input hidden="true" type="text" name="files_"  id="files_" class="files"
            <?php 
                    if(!empty($_POST['files_']))
                    {
@@ -163,6 +165,20 @@
             </div>
 
 
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
 
 
 
@@ -173,6 +189,7 @@
                 if(!empty($_POST['files_']))
                 {
                     $file = new SplFileObject("./server/php/files/". $_POST['files_'] );
+                    
                     echo "<h5><ul>";
 
                     // Main File Loop //
@@ -241,6 +258,7 @@
                         
                     }
                     // End of File Loop
+                    
                     echo "</ul></h5>";
                 }
                 
