@@ -4,15 +4,15 @@
  * and open the template in the editor.
  */
 
-function handleChange(checkbox) {
+function handleChange(checkbox, _element) {
     if(checkbox.checked == true){
         
-        alert("Checked: " + document.getElementById("critical__db"));
-        document.getElementById("critical__db").disabled = false;
+        alert("Checked: " + document.getElementById(_element));
+        document.getElementById(_element).disabled = false;
     }else{
         
         alert("UnChecked");
-        document.getElementById("critical__db").disabled = true;
+        document.getElementById(_element).disabled = true;
    }
 }
 
