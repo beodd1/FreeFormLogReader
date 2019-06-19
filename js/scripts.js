@@ -4,6 +4,17 @@
  * and open the template in the editor.
  */
 
+function handleChange(checkbox) {
+    if(checkbox.checked == true){
+        
+        alert("Checked: " + document.getElementById("critical__db"));
+        document.getElementById("critical__db").disabled = false;
+    }else{
+        
+        alert("UnChecked");
+        document.getElementById("critical__db").disabled = true;
+   }
+}
 
     $(function () {
         'use strict';
