@@ -8,85 +8,27 @@
     <script src="js/bootstrap.min.js" crossorigin="anonymous"></script>
 
     <link href="css/style.css" rel="stylesheet" type="text/css"/>
-    
-<script>
-
-
-    $(function () {
-        'use strict';
-        // Change this to the location of your server-side upload handler:
-        var url = window.location.hostname === 'blueimp.github.io' ?
-                    '' : 'server/php/';
-
-                    
-
-        $('#fileupload').fileupload({
-            url: url,
-            dataType: 'json',
-            done: function (e, data) {
-                $.each(data.result.files, function (index, file) {
-                    $('<p/>').text(file.name).appendTo('#files');
-                    document.getElementById('files_').value = file.name;
-                    document.getElementById('reset_').value = Date.now();
-                    
-                    document.getElementById('FileNamePostBack').submit();
-                });
-                
-            },
-            progressall: function (e, data) {
-            
-                var progress = parseInt(data.loaded / data.total * 100, 10);
-                $('#progress .progress-bar').css(
-                    'width',
-                    (progress+10) + '%'
-                );
-                if (progress==100)
-                {
-                    $('#progress .progress-bar').css(
-                    'width',
-                    (0) + '%'
-                );
-        
-                
-                    
-                }
-            }
-            
-        }).prop('disabled', !$.support.fileInput)
-            .parent().addClass($.support.fileInput ? undefined : 'disabled');
-            
-    });
-    
-    
-</script>
-    
-    
-    
-    
-    
-    
-    
-    
-    
- 
-    
+    <script src="js/scripts.js" type="text/javascript"></script>
     
 </head>
+
 <body>
     
 
-    
-
 <div class="topnavbar">
-    <a href="#home">Free Form Log Reader<?PHP //echo "<br><br>Session: " . $_SERVER['REQUEST_METHOD'] . "<br>"; ?></a>
+    <a href="#home">Free Form Log Reader</a>
 </div>
 
 
+    
+    
+    
+    
 <form id="FileNamePostBack" action="index_dev.php" method="post" >
 
 <!-- Code to handle checkboxes on postback -->
 
-<div  class="bottomnavbar">
+    <div  class="bottomnavbar">
     
     <a href='#contact'><input class='updateButton' name='update_'  value='Update Search'  type='submit'></button></a>
     
@@ -160,18 +102,18 @@
         ?>
   
 </div> 
-    
-    
+        
     <div id="drop_file_zone" class="container">
-        <div >
-            
-            
+        <div >           
             <!-- Render Progress Bar and File Select Button -->
             <div class="container">
                 <div class="row">
+                    
+                    <!-- Uncomment to make button on the right
                     <div  class="col-sm-9">
 
                     </div>
+                    -->
                     <div   class="col-sm-3">
                         <br>
                         <span  class="btn btn-success fileinput-button">
@@ -180,15 +122,17 @@
                             <input id="fileupload" type="file" name="files[]" multiple>
                         </span>
                     </div>
-                </div><br>
+                </div>
+                
+                <br>
+                
                 <div style="height: 5px;" id="progress" class="progress">
                     <div style="height: 5px;" class="progress-bar progress-bar-success"></div>
                 </div>
+                
+                
             </div>
-            
-                    
             <!-- Hidden Field to Pass Filename -->
-            
            <input hidden="true" type="text" name="files_"  id="files_" class="files"
            <?php 
                    if(!empty($_POST['files_']))
@@ -197,10 +141,9 @@
                    }  
            ?> />
            
+           
            <input type="text" hidden="true" name="reset_"  id="reset_"/>
 
-        
-        
             <!-- Render Search Box and Search Button -->
             <div class="wrap">
                <div class="search">
@@ -306,12 +249,16 @@
             
     </div>
 
+
+
+
+
 </form>    
 
+    
+    
+    
+    
         
 </body>
-
-
-
-
 </html>
