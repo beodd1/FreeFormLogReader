@@ -38,18 +38,18 @@
                 
                 if(!empty($_POST['reset_']))
                 {
-                    echo "<a style='padding: 15px 0px;' href='#contact'><input checked='false' name='critical_'  onchange='handleChange(this);' type='checkbox'/></a>";
+                    echo "<a style='padding: 15px 0px;' href='#contact'><input checked='false' name='critical_'  onchange='handleChange(this, \"critical__db\");' type='checkbox'/></a>";
                 }
                 else 
                 {
-                    echo "<a style='padding: 15px 0px;' href='#contact'><input checked='true' name='critical_' onchange='handleChange(this);'  type='checkbox'/></a>";
+                    echo "<a style='padding: 15px 0px;' href='#contact'><input checked='true' name='critical_' onchange='handleChange(this, \"critical__db\");'  type='checkbox'/></a>";
                 }
    
             }
             else 
             {
                 
-                echo "<a style='padding: 15px 0px;' href='#contact'><input onchange='handleChange(this);' name='critical_' type='checkbox'/></a>";
+                echo "<a style='padding: 15px 0px;' href='#contact'><input onchange='handleChange(this, \"critical__db\");' name='critical_' type='checkbox'/></a>";
 
             }
 
