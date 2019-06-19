@@ -7,6 +7,8 @@
     <script src="js/jquery.fileupload.js"></script>
     <script src="js/bootstrap.min.js" crossorigin="anonymous"></script>
 
+    <link href="css/style.css" rel="stylesheet" type="text/css"/>
+    
 <script>
 
 
@@ -66,241 +68,87 @@
     
     
     
-    
-<style>
-
-
-.bottomnavbar {
-  overflow: hidden;
-  background-color: #333;
-  position: fixed;
-  bottom: 0;
-  width: 100%;
-}
-
-
-.bottomnavbar a {
-  float: left;
-  display: block;
-  color: #f2f2f2;
-  text-align: center;
-  padding: 14px 16px;
-  text-decoration: none;
-  font-size: 17px;
-}
-
-.bottomnavbar input button {
-  float: left;
-  display: block;
-  color: #ffffff;
-  text-align: center;
-  padding: 14px 16px;
-  text-decoration: none;
-  font-size: 17px;
-}
-
-          
-        
-        
-/* The navigation bar */
-.topnavbar {
-  overflow: hidden;
-  background-color: #333;
-  position: fixed; /* Set the navbar to fixed position */
-  top: 0; /* Position the navbar at the top of the page */
-  width: 100%; /* Full width */
-}
-        
-     
-        
-/* Links inside the navbar */
-.topnavbar a {
-  float: left;
-  display: block;
-  color: #f2f2f2;
-  text-align: center;
-  padding: 14px 16px;
-  text-decoration: none;
-  font-size: 20px;
-}
-
-/* Change background on mouse-over */
-
-
-/* Main content */
-.main {
-  margin-top: 30px; /* Add a top margin to avoid content overlay */
-}
  
-    #drop_file_zone {
-        background-color: #EEE; 
-        border: #999 5px dashed;
-        width: 100%; 
-        height: 100%;
-        padding: 8px;
-        font-size: 20px;
-    }
-    
-    .fileinput-button {
-    position: relative;
-    overflow: hidden;
-    display: inline-block;
-    }
-    
-  .fileinput-button input {
-    position: absolute;
-    top: 0;
-    right: 0;
-    margin: 0;
-    opacity: 0;
-    -ms-filter: 'alpha(opacity=0)';
-    font-size: 200px !important;
-    direction: ltr;
-    cursor: pointer;
-    }
-
-  /* Fixes for IE < 8 */
-  @media screen\9 {
-    .fileinput-button input {
-      filter: alpha(opacity=0);
-      font-size: 100%;
-      height: 100%;
-    }
-}
-
-
-
-.search {
-  width: 100%;
-  position: relative;
-  display: flex;
-}
-
-.searchTerm {
-  width: 100%;
-  border: 3px solid #555555;
-  /* border-right: none; */
-  padding: 4px;
-  height: 30px;
-  border-radius: 10px 0 0 10px;
-  outline: none;
-  color: #515151;
-}
-
-.searchTerm:focus{
-  color: #515151;
-}
-
-.searchButton {
-  width: 50px;
-  height: 28px;
-  border: 1px solid #515151;
-  background: #515151;
-  text-align: center;
-  color: #515151;
-  border-radius: 0 5px 5px 0;
-  cursor: pointer;
-  font-size: 20px;
-}
-
-/*Resize the wrap to see the search bar change!*/
-.wrap{
-  width: 40%;
-  position: absolute;
-  top: 28px;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
-
-
-
-.updateButton {
-  width: 150px;
-  height: 28px;
-  border: 1px solid #515151;
-  background: #515151;
-  text-align: center;
-  color: #ffffff;
-  border-radius: 5px 5px 5px 5px;
-  cursor: pointer;
-  font-size: 16px;
-}
-
-
-    
-</style>
-    
     
     
 </head>
 <body>
-
-<div class="topnavbar">
-  <a href="#home">Free Form Log Reader</a>
-</div>
+    
 
     
+
+<div class="topnavbar">
+    <a href="#home">Free Form Log Reader<?PHP //echo "<br><br>Session: " . $_SERVER['REQUEST_METHOD'] . "<br>"; ?></a>
+</div>
+
+
 <form id="FileNamePostBack" action="index_dev.php" method="post" >
 
 <!-- Code to handle checkboxes on postback -->
 
-<div class="bottomnavbar">
+<div  class="bottomnavbar">
     
-      
+    <a href='#contact'><input class='updateButton' name='update_'  value='Update Search'  type='submit'></button></a>
+    
     
         <?php
             if(!empty($_POST['critical_']))
             {
-                echo "<a href='#contact'><input class='updateButton' name='update_'  value='Update Search'  type='submit'></button></a>";
-                
-
-                echo "<a><input list='critical__' name='critical__'><datalist id='critical__'><option value='Critical'><option value='Fail'></datalist></a>";
-
-                
                 
                 if(!empty($_POST['reset_']))
                 {
-                    echo "<a href='#contact'><input checked='false' name='critical_'  type='checkbox'/>&nbsp;Critical&nbsp;</a>";
+                    echo "<a style='padding: 15px 0px;' href='#contact'><input checked='false' name='critical_'  type='checkbox'/></a>";
                 }
                 else 
                 {
-                    echo "<a href='#contact'><input checked='true' name='critical_'  type='checkbox'/>&nbsp;Critical&nbsp;</a>";
+                    echo "<a style='padding: 15px 0px;' href='#contact'><input checked='true' name='critical_'  type='checkbox'/></a>";
                 }
-                
-                
-               
-                
+   
             }
             else 
             {
                 
-                echo "<a href='#contact'><input class='updateButton' name='update_'  value='Update Search'  type='submit'></button></a>";
-                echo "<a><input list='critical__' name='critical__'><datalist id='critical__'><option value='Critical'><option value='Fail'></datalist></a>";
-                
-                echo "<a href='#contact'><input name='critical_' type='checkbox'/>&nbsp;Critical&nbsp;</a>";
+                echo "<a style='padding: 15px 0px;' href='#contact'><input name='critical_' type='checkbox'/></a>";
 
             }
 
+            ?>
+    
+    <a style="padding: 10px 5px;" ><input  style='background: #ff3030; color: #000000; padding: 0px 0px;' placeholder='Critical String' list='critical__' name='critical__'><datalist id='critical__'><option value='Critical'><option value='Fail'></datalist></a>
+    
+            <?php
 
             if(!empty($_POST['error_']))
             {
-                echo "<a href='#contact'><input checked='true' name='error_'  type='checkbox'/>&nbsp;Error&nbsp;</a>";
+                echo "<a style='padding: 15px 0px;' href='#contact'><input checked='true' name='error_'  type='checkbox'/></a>";
             }
             else 
             {
-                echo "<a href='#contact'><input name='error_' type='checkbox'/>&nbsp;Error&nbsp;</a>";
+                echo "<a style='padding: 15px 0px;' href='#contact'><input name='error_' type='checkbox'/></a>";
             }
 
+            ?>
+    
+                <a style="padding: 10px 5px;" ><input disabled style='background: #ff8787; color: #000000; padding: 0px 0px;' placeholder='Error String' list='error__' name='error__'><datalist id='error__'><option value='error'><option value='error'></datalist></a>
+    
+            <?PHP
 
             if(!empty($_POST['warnning_']))
             {
-                echo "<a href='#contact'><input checked='true' name='warnning_'  type='checkbox'/>&nbsp;Warnning&nbsp;</a>";
+                echo "<a style='padding: 15px 0px;' href='#contact'><input checked='true' name='warnning_'  type='checkbox'/></a>";
             }
             else 
             {
-                echo "<a href='#contact'><input name='warnning_' type='checkbox'/>&nbsp;Warnning&nbsp;</a>";
+                echo "<a style='padding: 15px 0px;' href='#contact'><input name='warnning_' type='checkbox'/></a>";
             }
 
+            ?>
+            
+                <a style="padding: 10px 5px;" ><input disabled style='background: #ffb668; color: #000000; padding: 0px 0px;' placeholder='Warnning String' list='warrning__' name='warrning__'><datalist id='warnning__'><option value='Warnning'><option value='Warn'></datalist></a>
+                
+            <?php
+            
+            
             if(!empty($_POST['matchOnly_']))
             {
                 echo "<a href='#contact'><input checked='true' name='matchOnly_'  type='checkbox'/>&nbsp;Matches Only</a>";
@@ -349,7 +197,7 @@
                    }  
            ?> />
            
-           <input type="text" name="reset_"  id="reset_"/>
+           <input type="text" hidden="true" name="reset_"  id="reset_"/>
 
         
         

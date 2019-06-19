@@ -10,6 +10,172 @@
  * https://opensource.org/licenses/MIT
  */
 
-body {
-  padding-top: 60px;
+
+.bottomnavbar {
+  overflow: hidden;
+  background-color: #333;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}
+
+
+.bottomnavbar a {
+  float: left;
+  display: block;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+.bottomnavbar input button {
+  float: left;
+  display: block;
+  color: #ffffff;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+          
+        
+        
+/* The navigation bar */
+.topnavbar {
+  overflow: hidden;
+  background-color: #333;
+  position: fixed; /* Set the navbar to fixed position */
+  top: 0; /* Position the navbar at the top of the page */
+  width: 100%; /* Full width */
+}
+        
+     
+        
+/* Links inside the navbar */
+.topnavbar a {
+  float: left;
+  display: block;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 20px;
+}
+
+/* Change background on mouse-over */
+
+
+/* Main content */
+.main {
+  margin-top: 30px; /* Add a top margin to avoid content overlay */
+}
+ 
+    #drop_file_zone {
+        background-color: #EEE; 
+        border: #999 5px dashed;
+        width: 100%; 
+        height: 100%;
+        padding: 8px;
+        font-size: 20px;
+    }
+    
+    .fileinput-button {
+    position: relative;
+    overflow: hidden;
+    display: inline-block;
+    }
+    
+  .fileinput-button input {
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: 0;
+    opacity: 0;
+    -ms-filter: 'alpha(opacity=0)';
+    font-size: 200px !important;
+    direction: ltr;
+    cursor: pointer;
+    }
+
+  /* Fixes for IE < 8 */
+  @media screen\9 {
+    .fileinput-button input {
+      filter: alpha(opacity=0);
+      font-size: 100%;
+      height: 100%;
+    }
+}
+
+
+
+.search {
+  width: 100%;
+  position: relative;
+  display: flex;
+}
+
+.searchTerm {
+  width: 100%;
+  border: 3px solid #555555;
+  /* border-right: none; */
+  padding: 4px;
+  height: 30px;
+  border-radius: 10px 0 0 10px;
+  outline: none;
+  color: #515151;
+}
+
+.searchTerm:focus{
+  color: #515151;
+}
+
+.searchButton {
+  width: 50px;
+  height: 28px;
+  border: 1px solid #515151;
+  background: #515151;
+  text-align: center;
+  color: #515151;
+  border-radius: 0 5px 5px 0;
+  cursor: pointer;
+  font-size: 20px;
+}
+
+/*Resize the wrap to see the search bar change!*/
+.wrap{
+  width: 40%;
+  position: absolute;
+  top: 28px;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+
+
+.updateButton {
+  width: 150px;
+  height: 28px;
+  border: 1px solid #515151;
+  background: #515151;
+  text-align: center;
+  color: #ffffff;
+  border-radius: 5px 5px 5px 5px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+::placeholder {
+  color: black;
+  opacity: 1; /* Firefox */
+}
+
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
+ color: blach;
+}
+
+::-ms-input-placeholder { /* Microsoft Edge */
+ color: black;
 }
