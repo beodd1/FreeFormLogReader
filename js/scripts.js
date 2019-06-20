@@ -7,12 +7,17 @@
 function handleChange(checkbox, _element) {
     if(checkbox.checked == true){
         
-        alert("Checked: " + document.getElementById(_element));
-        document.getElementById(_element).disabled = false;
+        //alert("Checked: " + _element);
+        
+        document.getElementById(_element).readOnly = false;
+        document.getElementById(_element).style.color = "yellow";
+        document.getElementById(_element).setAttribute("style", "background-color: #a90000;");
     }else{
         
-        alert("UnChecked");
-        document.getElementById(_element).disabled = true;
+        //alert("UnChecked: " + _element);
+        document.getElementById(_element).readOnly = true;
+        document.getElementById(_element).style.color = "blue";
+        document.getElementById(_element).setAttribute("style", "background-color: #824f4f;");
    }
 }
 
