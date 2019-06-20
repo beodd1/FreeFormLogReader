@@ -26,7 +26,7 @@
     
 <form id="FileNamePostBack" action="index_dev.php" method="post" >
 
-    <!-- Code to handle checkboxes on postback -->
+    <!-- Code to update controls on postback -->
     <div  class="bottomnavbar">
     
     <a href='#contact'><input class='updateButton' name='update_'  value='Update Search'  type='submit'></button></a>
@@ -36,14 +36,14 @@
             if(!empty($_POST['critical_']))
             {
                 
-                if(!empty($_POST['reset_']))
+
+                echo "<a style='padding: 15px 0px;' href='#contact'><input checked='true' name='critical_' onchange='handleChange(this, \"critical__db\");'  type='checkbox'/></a>";
+                echo "<a style='padding: 10px 5px;' ><input type='text'  style='background: #a90000; color: #FFFFFF; padding: 0px 0px;' placeholder='Critical String' value='"; 
+                if (!empty($_POST['critical__db']))
                 {
-                    echo "<a style='padding: 15px 0px;' href='#contact'><input checked='false' name='critical_'  onchange='handleChange(this, \"critical__db\");' type='checkbox'/></a>";
+                    echo $_POST['critical__db'];
                 }
-                else 
-                {
-                    echo "<a style='padding: 15px 0px;' href='#contact'><input checked='true' name='critical_' onchange='handleChange(this, \"critical__db\");'  type='checkbox'/></a>";
-                }
+                echo " ' id='critical__db' list='critical__' name='critical__db'><datalist id='critical__'><option value='Critical'><option value='Fail'></datalist></a>";
    
             }
             else 
@@ -51,11 +51,20 @@
                 
                 echo "<a style='padding: 15px 0px;' href='#contact'><input onchange='handleChange(this, \"critical__db\");' name='critical_' type='checkbox'/></a>";
 
+                
+                echo "<a style='padding: 10px 5px;' ><input type='text' readonly style='background: #824f4f; color: #FFFFFF; padding: 0px 0px;' placeholder='Critical String' value='"; 
+                if (!empty($_POST['critical__db']))
+                {
+                    echo $_POST['critical__db'];
+                }
+                echo " ' id='critical__db' list='critical__' name='critical__db'><datalist id='critical__'><option value='Critical'><option value='Fail'></datalist></a>";
+                   
+
             }
 
             ?>
     
-    <a style="padding: 10px 5px;" ><input disabled style='background: #ff3030; color: #000000; padding: 0px 0px;' placeholder='Critical String' id='critical__db' list='critical__' name='critical__db'><datalist id='critical__'><option value='Critical'><option value='Fail'></datalist></a>
+    
     
             <?php
 
@@ -110,11 +119,13 @@
             <div class="container">
                 <div class="row">
                     
-                    <!-- Uncomment to make button on the right
+                    <!-- comment to make button on the right -->
                     <div  class="col-sm-9">
 
                     </div>
-                    -->
+                    <!-- ------------------ -->
+                    
+                    
                     <div   class="col-sm-3">
                         <br>
                         <span  class="btn btn-success fileinput-button">
