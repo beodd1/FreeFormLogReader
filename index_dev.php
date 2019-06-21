@@ -37,8 +37,8 @@
             {
                 
 
-                echo "<a style='padding: 15px 0px;' href='#contact'><input checked='true' name='critical_' onchange='handleChange(this, \"critical__db\");'  type='checkbox'/></a>";
-                echo "<a style='padding: 10px 5px;' ><input type='text'  style='background: #a90000; color: #FFFFFF; padding: 0px 0px;' placeholder='Critical String' value='"; 
+                echo "<a style='padding: 15px 0px;' href='#contact'><input checked='true' name='critical_' onchange='handleChange(this, \"critical__db\",1);'  type='checkbox'/></a>";
+                echo "<a style='padding: 10px 5px;' ><input type='text'  style='background: #a90000; color: #000000; padding: 0px 0px;' placeholder='Critical String' value='"; 
                 if (!empty($_POST['critical__db']))
                 {
                     echo $_POST['critical__db'];
@@ -47,58 +47,80 @@
    
             }
             else 
-            {
-                
-                echo "<a style='padding: 15px 0px;' href='#contact'><input onchange='handleChange(this, \"critical__db\");' name='critical_' type='checkbox'/></a>";
-
-                
-                echo "<a style='padding: 10px 5px;' ><input type='text' readonly style='background: #824f4f; color: #FFFFFF; padding: 0px 0px;' placeholder='Critical String' value='"; 
-                if (!empty($_POST['critical__db']))
-                {
-                    echo $_POST['critical__db'];
-                }
-                echo " ' id='critical__db' list='critical__' name='critical__db'><datalist id='critical__'><option value='Critical'><option value='Fail'></datalist></a>";
+            {               
+                echo "<a style='padding: 15px 0px;' href='#contact'><input onchange='handleChange(this, \"critical__db\",1);' name='critical_' type='checkbox'/></a>";   
+                echo "<a style='padding: 10px 5px;' ><input type='text' readonly style='background: #824f4f; color: #000000; padding: 0px 0px;' placeholder='Critical String' value='"; 
+                //if (!empty($_POST['critical__db']))
+                //{
+                //    echo $_POST['critical__db'];
+                //}
+                echo "crit' id='critical__db' list='critical__' name='critical__db'><datalist id='critical__'><option value='Critical'><option value='Fail'></datalist></a>";
                    
 
             }
 
-            ?>
+        ?>
     
-    
-    
-            <?php
-
+        <?php
             if(!empty($_POST['error_']))
             {
-                echo "<a style='padding: 15px 0px;' href='#contact'><input checked='true' name='error_'  type='checkbox'/></a>";
-            }
-            else 
-            {
-                echo "<a style='padding: 15px 0px;' href='#contact'><input name='error_' type='checkbox'/></a>";
-            }
-
-            ?>
-    
-                <a style="padding: 10px 5px;" ><input disabled style='background: #ff8787; color: #000000; padding: 0px 0px;' placeholder='Error String' list='error__' name='error__'><datalist id='error__'><option value='error'><option value='error'></datalist></a>
-    
-            <?PHP
-
-            if(!empty($_POST['warnning_']))
-            {
-                echo "<a style='padding: 15px 0px;' href='#contact'><input checked='true' name='warnning_'  type='checkbox'/></a>";
-            }
-            else 
-            {
-                echo "<a style='padding: 15px 0px;' href='#contact'><input name='warnning_' type='checkbox'/></a>";
-            }
-
-            ?>
-            
-                <a style="padding: 10px 5px;" ><input disabled style='background: #ffb668; color: #000000; padding: 0px 0px;' placeholder='Warnning String' list='warrning__' name='warrning__'><datalist id='warnning__'><option value='Warnning'><option value='Warn'></datalist></a>
                 
-            <?php
-            
-            
+
+                echo "<a style='padding: 15px 0px;' href='#contact'><input checked='true' name='error_' onchange='handleChange(this, \"error__db\",2);'  type='checkbox'/></a>";
+                echo "<a style='padding: 10px 5px;' ><input type='text'  style='background: #ca7100; color: #000000; padding: 0px 0px;' placeholder='Error String' value='"; 
+                if (!empty($_POST['error__db']))
+                {
+                    echo $_POST['error__db'];
+                }
+                echo " ' id='error__db' list='error__' name='error__db'><datalist id='error__'><option value='Error'><option value='Error'></datalist></a>";
+   
+            }
+            else 
+            {               
+                echo "<a style='padding: 15px 0px;' href='#contact'><input onchange='handleChange(this, \"error__db\",2);' name='error_' type='checkbox'/></a>";   
+                echo "<a style='padding: 10px 5px;' ><input type='text' readonly style='background: #927958; color: #000000; padding: 0px 0px;' placeholder='Error String' value='"; 
+                //if (!empty($_POST['error__db']))
+                //{
+                //    echo $_POST['error__db'];
+                //}
+                echo "error' id='error__db' list='error__' name='error__db'><datalist id='error__'><option value='Error'><option value='Error'></datalist></a>";
+                   
+
+            }
+
+        ?>
+    
+    
+        <?php
+            if(!empty($_POST['warning_']))
+            {
+                
+
+                echo "<a style='padding: 15px 0px;' href='#contact'><input checked='true' name='warning_' onchange='handleChange(this, \"warning__db\",3);'  type='checkbox'/></a>";
+                echo "<a style='padding: 10px 5px;' ><input type='text'  style='background: #c9ce00; color: #000000; padding: 0px 0px;' placeholder='Warning String' value='"; 
+                if (!empty($_POST['warning__db']))
+                {
+                    echo $_POST['warning__db'];
+                }
+                echo " ' id='warning__db' list='warning__' name='warning__db'><datalist id='warning__'><option value='Warning'><option value='Warn'></datalist></a>";
+   
+            }
+            else 
+            {               
+                echo "<a style='padding: 15px 0px;' href='#contact'><input onchange='handleChange(this, \"warning__db\",3);' name='warning_' type='checkbox'/></a>";   
+                echo "<a style='padding: 10px 5px;' ><input type='text' readonly style='background: #8a8c45; color: #000000; padding: 0px 0px;' placeholder='Warning String' value='"; 
+                //if (!empty($_POST['warning__db']))
+                //{
+                //    echo $_POST['warning__db'];
+                //}
+                echo "warn' id='warning__db' list='warning__' name='warning__db'><datalist id='warning__'><option value='Warn'><option value='Warn'></datalist></a>";
+                   
+
+            }
+
+        ?>    
+    
+        <?php
             if(!empty($_POST['matchOnly_']))
             {
                 echo "<a href='#contact'><input checked='true' name='matchOnly_'  type='checkbox'/>&nbsp;Matches Only</a>";
@@ -108,7 +130,9 @@
                 echo "<a href='#contact'><input name='matchOnly_' type='checkbox'/>&nbsp;Matches Only</a>";
             }
         ?>
-  
+    
+
+    
 </div> 
         
     
@@ -214,7 +238,7 @@
                             $search_ = $_POST['search_'];
                             if (stripos($file, $search_))
                             {
-                                echo "<li style='background-color: #f7ffc6;'>";
+                                echo "<li style='background-color: #77abff;'>";
                                 echo $file;
                                 echo "</li>";
                                 continue;
@@ -224,9 +248,9 @@
                         // Render Critical //
                         if(!empty($_POST['critical_']))
                         {
-                            if (stripos($file, 'critical'))
+                            if (stripos($file, $_POST['critical_']))
                             {
-                                echo "<li style='background-color: #ff0000;'>";
+                                echo "<li style='background-color: #a90000;'>";
                                 echo $file;
                                 echo "</li>";
                                 continue;
@@ -237,21 +261,21 @@
                         // Render Errors //                       
                         if(!empty($_POST['error_']))
                         {
-                            if (stripos($file, 'error'))
+                            if (stripos($file, $_POST['error_']))
                             {
-                                echo "<li style='background-color: #d86363;'>";
+                                echo "<li style='background-color: #ca7100;'>";
                                 echo $file;
                                 echo "</li>";
                                 continue;
                             }   
                         }
 
-                        // Render Warnnings //
-                        if(!empty($_POST['warnning_']))
+                        // Render Warnings //
+                        if(!empty($_POST['warning_']))
                         {
-                            if (stripos($file, 'warn'))
+                            if (stripos($file, $_POST['warning_']))
                             {
-                                echo "<li style='background-color: #db8e4e;'>";
+                                echo "<li style='background-color: #c9ce00;'>";
                                 echo $file;
                                 echo "</li>";
                                 continue;
