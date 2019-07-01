@@ -221,9 +221,12 @@
         <div style="overflow:scroll; height:70%; width: 98%;" >
             <?php 
 
+                
+            
                 if(!empty($_POST['files_']))
                 {
-                    $file = new SplFileObject("./server/php/files/". $_POST['files_'] );
+                    $files_ = $_POST['files_'];
+                    $file = new SplFileObject("./server/php/files/". $files_ );
                     
                     echo "<h5><ul>";
 
@@ -236,6 +239,7 @@
                         if(!empty($_POST['search_']))
                         {
                             $search_ = $_POST['search_'];
+                            $search_ = str_replace(' ', '', $search_);
                             if (stripos($file, $search_))
                             {
                                 echo "<li style='background-color: #77abff;'>";
@@ -244,43 +248,64 @@
                                 continue;
                             }  
                         }
-                       
+                        
                         // Render Critical //
                         if(!empty($_POST['critical_']))
                         {
-                            if (stripos($file, $_POST['critical_']))
+                            $search_ = $_POST['critical__db'];
+                            $search_ = str_replace(' ', '', $search_);
+                            
+                            if (stripos($file, $search_))
                             {
+                                //echo 'CRITICAL:'.$_POST['critical__db'] ;
                                 echo "<li style='background-color: #a90000;'>";
                                 echo $file;
                                 echo "</li>";
                                 continue;
                             }
                             
-                        }
-                        
+                        }                        
+
                         // Render Errors //                       
                         if(!empty($_POST['error_']))
                         {
-                            if (stripos($file, $_POST['error_']))
+                            $search_ = $_POST['error__db'];
+                            $search_ = str_replace(' ', '', $search_);
+                            
+                            if (stripos($file, $search_))
                             {
+                                //echo 'ERROR:'.$search_ ;
                                 echo "<li style='background-color: #ca7100;'>";
                                 echo $file;
                                 echo "</li>";
                                 continue;
                             }   
-                        }
+                        }                        
+                        
 
+                        
+
+                        
                         // Render Warnings //
                         if(!empty($_POST['warning_']))
                         {
-                            if (stripos($file, $_POST['warning_']))
+                            $search_ = $_POST['warning__db'];
+                            $search_ = str_replace(' ', '', $search_);
+                            
+                            if (stripos($file, $search_))
                             {
+                                
+                                //echo 'WARN:'.$search_ ;
                                 echo "<li style='background-color: #c9ce00;'>";
                                 echo $file;
                                 echo "</li>";
                                 continue;
                             }   
-                        }                        
+                        }    
+
+
+
+                    
                         
                         // Remove anything that does not match any of the other conditions //
                         if(empty($_POST['matchOnly_']))
