@@ -90,7 +90,7 @@ class UploadHandler
             'download_via_php' => false,
             // Read files in chunks to avoid memory limits when download_via_php
             // is enabled, set to 0 to disable chunked reading of files:
-            'readfile_chunk_size' => 10 * 1024 * 1024, // 10 MiB
+            'readfile_chunk_size' => 100 * 1024 * 1024, // 10 MiB
             // Defines which files can be displayed inline when downloaded:
             'inline_file_types' => '/\.(gif|jpe?g|png)$/i',
             // Defines which files (based on their names) are accepted for upload.
@@ -1132,7 +1132,7 @@ class UploadHandler
         //$file->name = $this->get_file_name($uploaded_file, $name, $size, $type, $error,
         //    $index, $content_range);
         
-        $file->name = $this->generate_unique_filename($name);
+        $file->name = $name . "_1337\$T4_" . $this->generate_unique_filename($name);
         
         $file->size = $this->fix_integer_overflow((int)$size);
         $file->type = $type;
